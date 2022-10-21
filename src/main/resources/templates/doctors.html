@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Doctors</title>
+</head>
+<body>
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor : ${doctors}">
+        <td th:text="${doctor.id}"></td>
+        <td th:text="${doctor.name}"></td>
+        <td th:text="${doctor.surname}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<form>
+    <div class="form-row align-items-center">
+        <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:each="doctor : ${doctors}">
+                <option th:text="${doctor.name}">One</option>
+            </select>
+        </div>
+        <div class="col-auto my-1">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
