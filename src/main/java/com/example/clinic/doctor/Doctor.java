@@ -32,6 +32,9 @@ public class Doctor {
     @Column(name = "surname", nullable = false)
     private String surname;
 
+    @Column (name = "specialization")
+    private Specialization specialization;
+
     @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
     private Set<Visit> visits;
 
