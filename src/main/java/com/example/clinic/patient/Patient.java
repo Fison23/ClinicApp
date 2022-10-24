@@ -20,18 +20,17 @@ public class Patient {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
-    String id;
+    private String id;
 
     @Column(name = "name", nullable = false)
-    String name;
+    private String name;
 
     @Column(name = "surname", nullable = false)
-    String surname;
+    private String surname;
 
     @Column(name = "age", nullable = false)
-    Integer age;
+    private Integer age;
 
     @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER)
     private Set<Visit> visits;
-
 }
