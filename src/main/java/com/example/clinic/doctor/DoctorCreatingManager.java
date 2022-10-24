@@ -16,6 +16,8 @@ public class DoctorCreatingManager {
             Specialization.GASTROENTEROLOGIST
     ));
 
+    Specialization [] specialization = Specialization.values();
+
     HashMap<Specialization, Integer> doctorPrice = new HashMap<>(Map.of(
             Specialization.DERMATOLOGIST, 100,
             Specialization.THERAPYST, 200,
@@ -34,7 +36,7 @@ public class DoctorCreatingManager {
 
 
     public Integer getPrice(Specialization specialization) {
-        return doctorPrice.get(specialization).intValue();
+        return doctorPrice.get(specialization);
     }
 
     public Specialization getSpec (Integer indexOfSpec) {
