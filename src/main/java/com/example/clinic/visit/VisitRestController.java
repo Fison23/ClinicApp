@@ -30,21 +30,20 @@ public class VisitRestController {
         LocalDateTime datetimeofvisit = LocalDateTime.parse(timeOfVisit, DateTimeFormatter.ISO_DATE_TIME);
         Doctor doctor = doctorRepository.findById(doctorId).orElseThrow();
         Patient patient = patientRepository.findById(patientId).orElseThrow();
-        Integer price = doctorCreatingManager.getPrice(doctor.getSpecialization());
-        Long duration = doctorCreatingManager.getVisitDuration(doctor.getSpecialization());
-        LocalDateTime endTimeOfVisit = datetimeofvisit.plusMinutes(duration);
+        LocalDateTime endTimeOfVisit = datetimeofvisit.plusMinutes(doctor.getSpecialization().getDuration());
 
 
         checkIsVisitAlreadyExist(doctor, patient, datetimeofvisit);
+
         Visit newVisit = visitRepository.save(
                         Visit.builder()
                                 .isVisit(true)
                                 .patient(patient)
                                 .timeOfVisit(datetimeofvisit)
-                                .price(price)
+                                .price(doctor.getSpecialization().getPrice())
                                 .doctorConclusion(doctorConclusion)
                                 .endTimeOfVisit(endTimeOfVisit)
-                                .duration(duration)
+                                .duration(doctor.getSpecialization().getDuration())
                                 .doctor(doctor)
                                 .build());
         return newVisit.getId();

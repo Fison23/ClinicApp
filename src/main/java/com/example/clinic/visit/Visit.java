@@ -36,7 +36,7 @@ public class Visit {
     private Integer price;
 
     @Column(name = "duration")
-    private Long duration;
+    private Integer duration;
 
     @Column(name = "end_time_of_visit")
     private LocalDateTime endTimeOfVisit;
