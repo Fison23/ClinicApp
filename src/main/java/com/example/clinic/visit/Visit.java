@@ -1,14 +1,12 @@
 package com.example.clinic.visit;
 
 import com.example.clinic.doctor.Doctor;
-import com.example.clinic.doctor.Specialization;
 import com.example.clinic.patient.Patient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,14 +30,6 @@ public class Visit {
     @Column(name = "time_of_visit", nullable = false)
     private LocalDateTime timeOfVisit;
 
-    @Column(name = "price")
-    private Integer price;
-
-    @Column(name = "duration")
-    private Long duration;
-
-    @Column(name = "end_time_of_visit")
-    private LocalDateTime endTimeOfVisit;
 
     @Column (name = "doctor_conclusion")
     private String doctorConclusion;

@@ -1,23 +1,20 @@
-package com.example.clinic.doctor;
+package com.example.clinic.service;
 
 import com.example.clinic.specialisation.Specialization;
-import com.example.clinic.visit.Visit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
-@Table(name = "doctor")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "service")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@ToString
-public class Doctor {
+public class Service {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -25,17 +22,19 @@ public class Doctor {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "surname", nullable = false)
-    private String surname;
+    @Column(name = "price")
+    private Integer price;
 
-    @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
-    private Set<Visit> visits;
+    @Column(name = "duration")
+    private Integer durationInMinutes;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "specialization_id", insertable = false, updatable = false)
+    @JoinColumn(name = "specialization_id")
     private Specialization specialization;
+
+
 }
